@@ -1,0 +1,6 @@
+name: ServerAPI
+version: ${project.version}
+main: me.quexer.homeserver.serverapi.ServerAPI
+prefix: Server
+authors: [Quexer]
+description: ServerAPI
