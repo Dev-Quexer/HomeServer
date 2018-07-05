@@ -24,7 +24,7 @@ public class UserManager {
             return;
         }
 
-        ServerAPI.getMongoManager().getCollection("Users").find(Filters.eq("uuid")).first((document, throwable) -> {
+        ServerAPI.getMongoManager().getCollection("Users").find(Filters.eq("uuid", player.getUniqueId().toString())).first((document, throwable) -> {
             if(document == null) {
                 User user = new User();
                 user.setCoins(1000);
@@ -38,6 +38,8 @@ public class UserManager {
 
                 consumer.accept(user);
                 ServerAPI.getInstance().setMetadata(player.getPlayer(), "user", user);
+
+                document = document = ServerAPI.getGson().fromJson(ServerAPI.getGson().toJson(user), Document.class);
 
                 ServerAPI.getMongoManager().getCollection("Users").insertOne(document, (aVoid, throwable1) -> {
                     player.getPlayer().sendMessage(ServerAPI.getPrefix()+"§7Du wurdest §aerfolgreich §7in der Datenbank erstellt§8.");

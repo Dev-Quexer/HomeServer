@@ -1,6 +1,6 @@
 package me.quexer.homeserver.serverapi.quickyapi.api;
 
-import me.quexer.api.quickyapi.QuickyAPI;
+import me.quexer.homeserver.serverapi.ServerAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -16,7 +16,7 @@ public class InventoryHandler implements Listener {
     private final HashMap<Inventory, ItemListener> listener = new HashMap();
 
     public InventoryHandler() {
-        Bukkit.getPluginManager().registerEvents(this, QuickyAPI.getInstance());
+        Bukkit.getPluginManager().registerEvents(this, ServerAPI.getInstance());
     }
 
     public void registerListener(Inventory inventory, ItemListener listener) {

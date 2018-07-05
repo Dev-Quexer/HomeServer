@@ -1,7 +1,7 @@
 package me.quexer.homeserver.serverapi.quickyapi.api;
 
 
-import me.quexer.api.quickyapi.QuickyAPI;
+import me.quexer.homeserver.serverapi.ServerAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.inventory.InventoryType;
@@ -27,7 +27,7 @@ public class InventoryBuilder {
     }
 
     public InventoryBuilder addListener(ItemListener listener) {
-        QuickyAPI.getInventoryHandler().registerListener(this.inventory, listener);
+        ServerAPI.getInventoryHandler().registerListener(this.inventory, listener);
         return this;
     }
 

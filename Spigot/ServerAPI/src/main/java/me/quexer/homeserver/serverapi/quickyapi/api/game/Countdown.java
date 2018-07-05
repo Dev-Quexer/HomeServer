@@ -1,7 +1,7 @@
 package me.quexer.homeserver.serverapi.quickyapi.api.game;
 
-import me.quexer.api.quickyapi.QuickyAPI;
-import me.quexer.api.quickyapi.utils.TitleBuilder;
+import me.quexer.homeserver.serverapi.ServerAPI;
+import me.quexer.homeserver.serverapi.quickyapi.utils.TitleBuilder;
 import org.bukkit.Bukkit;
 
 public class Countdown {
@@ -21,7 +21,7 @@ public class Countdown {
         setDisplayType(displayType);
         setMsg(msg);
 
-        Bukkit.getScheduler().scheduleAsyncRepeatingTask(QuickyAPI.getInstance(), () -> {
+        Bukkit.getScheduler().scheduleAsyncRepeatingTask(ServerAPI.getInstance(), () -> {
 
             if(high == 0) {
                 finish.run();

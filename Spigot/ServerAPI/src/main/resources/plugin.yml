@@ -4,3 +4,12 @@ main: me.quexer.homeserver.serverapi.ServerAPI
 prefix: Server
 authors: [Quexer]
 description: ServerAPI
+commands:
+  coins:
+  teleport:
+    tp:
+  gamemode:
+    gm:
+    g:
+  nick:
+    nickname:

@@ -1,6 +1,6 @@
 package me.quexer.homeserver.serverapi.quickyapi.api;
 
-import me.quexer.api.quickyapi.QuickyAPI;
+import me.quexer.homeserver.serverapi.ServerAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class LocationAPI {
 
-    private File file = new File(QuickyAPI.getInstance().getDataFolder(), "locations.yml");
+    private File file = new File(ServerAPI.getInstance().getDataFolder(), "locations.yml");
 
     public void save() {
         try {

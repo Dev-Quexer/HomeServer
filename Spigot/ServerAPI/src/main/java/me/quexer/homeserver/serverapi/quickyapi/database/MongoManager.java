@@ -1,13 +1,14 @@
 package me.quexer.homeserver.serverapi.quickyapi.database;
 
 import com.mongodb.ConnectionString;
-import com.mongodb.async.client.MongoClient;
-import com.mongodb.async.client.MongoClients;
-import com.mongodb.async.client.MongoCollection;
-import com.mongodb.async.client.MongoDatabase;
+import com.mongodb.ServerAddress;
+import com.mongodb.async.client.*;
+import com.mongodb.connection.ClusterSettings;
+import com.mongodb.connection.SslSettings;
 import org.bson.Document;
 
 import java.text.MessageFormat;
+import java.util.Arrays;
 
 public class MongoManager {
 
@@ -20,7 +21,10 @@ public class MongoManager {
     public MongoManager(String hostname, int port, String database) {
         this.hostname = hostname;
         this.port = port;
-        this.client = MongoClients.create(new ConnectionString(MessageFormat.format("mongodb://{0}:{1}", hostname, String.valueOf(port))));
+
+        ClusterSettings clusterSettings = ClusterSettings.builder().hosts(Arrays.asList(new ServerAddress(hostname))).description("Local Server").build();
+        MongoClientSettings settings = MongoClientSettings.builder().clusterSettings(clusterSettings).build();
+        this.client = MongoClients.create(settings);
         this.database = client.getDatabase(database);
     }
 

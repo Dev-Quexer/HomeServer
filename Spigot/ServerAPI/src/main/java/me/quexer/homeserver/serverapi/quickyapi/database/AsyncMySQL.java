@@ -1,7 +1,7 @@
 package me.quexer.homeserver.serverapi.quickyapi.database;
 
 
-import me.quexer.api.quickyapi.QuickyAPI;
+import me.quexer.homeserver.serverapi.ServerAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
@@ -32,7 +32,7 @@ public class AsyncMySQL {
         try {
             sql = new MySQL("localhost", 3306, "LocalServer", "oe196jUF", "LocalServer");
             executor = Executors.newCachedThreadPool();
-            plugin = QuickyAPI.getInstance();
+            plugin = ServerAPI.getInstance();
         } catch (Exception e) {
             e.printStackTrace();
         }
