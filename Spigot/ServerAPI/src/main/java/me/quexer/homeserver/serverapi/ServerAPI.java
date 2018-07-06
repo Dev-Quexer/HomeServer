@@ -52,6 +52,7 @@ public final class ServerAPI extends JavaPlugin {
     }
 
     public void init() {
+
         setInstance(this);
         setGson(new Gson());
         setLocationAPI(new LocationAPI());
