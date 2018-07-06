@@ -102,7 +102,7 @@ public class BanCMD extends Command {
 
                                     case "8":
                                         if (s.hasPermission("ban.banban")) {
-                                            ProxySystem.getBanManager().banPlayer(banPlayer, "Bannumgehung", s.getName(), -1);
+                                            ProxySystem.getBanManager().banPlayer(banPlayer, "Bannumgehung", s.getName(), -2);
                                         } else {
                                             s.sendMessage(ProxySystem.getBanPrefix() + "§cFür diesen Grund darfst du nicht bannen§8!");
                                         }
@@ -110,43 +110,43 @@ public class BanCMD extends Command {
 
                                     case "9":
                                         if (s.hasPermission("ban.banban")) {
-                                            ProxySystem.getBanManager().banPlayer(banPlayer, "Hausverbot", s.getName(), -1);
+                                            ProxySystem.getBanManager().banPlayer(banPlayer, "Hausverbot", s.getName(), -2);
                                         } else {
                                             s.sendMessage(ProxySystem.getBanPrefix() + "§cFür diesen Grund darfst du nicht bannen§8!");
                                         }
                                         break;
-                                    /*
+
 
 
 
                                    case "10":
-                                        MuteManager.MutePlayer(name, "Beleidigung", s.getName(), (finalDauer == -1)    ? -1 :  24 * 3 * finalDauer    );
+                                        ProxySystem.getMuteManager().MutePlayer(banPlayer, "Beleidigung", s.getName(), (finalDauer == -1)    ? -1 :  24 * 3 * finalDauer    );
                                         break;
 
                                     case "11":
-                                        MuteManager.MutePlayer(name, "Rassismus", s.getName(), (finalDauer == -1)    ? -1 :  24 * 7 * finalDauer    );
+                                        ProxySystem.getMuteManager().MutePlayer(banPlayer, "Rassismus", s.getName(), (finalDauer == -1)    ? -1 :  24 * 7 * finalDauer    );
                                         break;
 
                                     case "12":
-                                        MuteManager.MutePlayer(name, "Werbung", s.getName(), (finalDauer == -1)    ? -1 :  24 * 2 * finalDauer    );
+                                        ProxySystem.getMuteManager().MutePlayer(banPlayer, "Werbung", s.getName(), (finalDauer == -1)    ? -1 :  24 * 2 * finalDauer    );
                                         break;
 
                                     case "13":
-                                        MuteManager.MutePlayer(name, "Spamming", s.getName(), (finalDauer == -1)    ? -1 :  12 * finalDauer    );
+                                        ProxySystem.getMuteManager().MutePlayer(banPlayer, "Spamming", s.getName(), (finalDauer == -1)    ? -1 :  12 * finalDauer    );
                                         break;
 
                                     case "14":
-                                        MuteManager.MutePlayer(name, "Provokation", s.getName(), (finalDauer == -1)    ? -1 :  12 * finalDauer    );
+                                        ProxySystem.getMuteManager().MutePlayer(banPlayer, "Provokation", s.getName(), (finalDauer == -1)    ? -1 :  12 * finalDauer    );
                                         break;
 
                                     case "15":
                                         if (s.hasPermission("ban.banban")) {
-                                            MuteManager.MutePlayer(name, "Schweigepfilcht", s.getName(), -1);
+                                            ProxySystem.getMuteManager().MutePlayer(banPlayer, "Schweigepfilcht", s.getName(), -1);
                                         } else {
-                                            s.sendMessage(BungeeSystem.getPrefix()+"§cFür diesen Grund darfst du nicht bannen§8!");
+                                            s.sendMessage(ProxySystem.getMutePrefix()+"§cFür diesen Grund darfst du nicht bannen§8!");
                                         }
                                         break;
-                                    */
+
 
                                 }
                             });

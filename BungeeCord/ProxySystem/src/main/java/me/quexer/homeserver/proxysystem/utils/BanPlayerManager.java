@@ -30,7 +30,6 @@ public class BanPlayerManager {
                banPlayer.setBanReason("NONE");
                banPlayer.setMuteEnd(-1);
                banPlayer.setMuteFrom("NONE");
-               banPlayer.setMutePoints(0);
                banPlayer.setMuteReason("NONE");
 
                 consumer.accept(banPlayer);

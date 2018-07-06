@@ -30,7 +30,7 @@ public class BanManager {
             if(!isBanned) {
                 long end;
                 int banPoints = banPlayer.getBanPoints()+1;
-                if(banPoints >= 4) {
+                if(banPoints >= 5 || Stunden == -2) {
                     end = -2;
                 } else {
                     long now = System.currentTimeMillis();
@@ -64,11 +64,14 @@ public class BanManager {
                         player.disconnect("§8● §c§lHomeServer§8.§c§lnet §8●\n\n" +
                                 "§cDu wurdest vom §eNetzwerk §cgebannt§8!\n" +
                                 "\n" +
+                                "§8§m------------------------------\n" +
                                 "§7Grund§8: §e"+reason+"\n" +
                                 "§7Gebannt von§8: §e"+von+"\n" +
                                 "§7Gebannt bis§8: §e"+getDate(end)+"\n" +
                                 "§7BanPoints§8: §e"+banPoints+"\n" +
+                                "§8§m------------------------------\n" +
                                 "\n" +
+                                "§8(§7Ab §e5 §7BanPoints ist der Ban §4§lPERMANENT§8)\n" +
                                 "§7Du kannst einen §eEntbannungsantrag §7im Forum stellen");
                     }
 

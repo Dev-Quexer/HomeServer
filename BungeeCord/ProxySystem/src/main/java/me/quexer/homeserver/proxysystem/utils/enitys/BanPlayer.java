@@ -12,8 +12,6 @@ public class BanPlayer {
 
     private int banPoints;
 
-    private int mutePoints;
-
     private String banReason;
 
     private String muteReason;
@@ -56,14 +54,6 @@ public class BanPlayer {
 
     public void setBanPoints(int banPoints) {
         this.banPoints = banPoints;
-    }
-
-    public int getMutePoints() {
-        return mutePoints;
-    }
-
-    public void setMutePoints(int mutePoints) {
-        this.mutePoints = mutePoints;
     }
 
     public String getBanReason() {

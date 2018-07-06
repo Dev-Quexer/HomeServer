@@ -10,6 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerLoginEvent;
 
 public class NickListener implements Listener {
 
@@ -32,18 +33,7 @@ public class NickListener implements Listener {
         }
     }
 
-    @EventHandler
-    public void onJoin(PlayerJoinEvent e) {
-        if(ServerAPI.isNickOnThisServer()) {
-            if (e.getPlayer().hasPermission("nick.nick")) {
-                ServerAPI.getUserManager().getUser(Bukkit.getOfflinePlayer(e.getPlayer().getUniqueId()).getPlayer(), user -> {
-                    if(user.isNick()) {
-                        e.getPlayer().performCommand("nick");
-                    }
-                });
-            }
-        }
-    }
+
 
 
 }
