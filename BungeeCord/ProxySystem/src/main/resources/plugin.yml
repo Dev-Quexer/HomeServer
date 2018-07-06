@@ -2,3 +2,6 @@ name: ProxySystem
 version: ${project.version}
 main: me.quexer.homeserver.proxysystem.ProxySystem
 description: ProxySystem
+commands:
+  reasons:
+  ban:

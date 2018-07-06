@@ -38,7 +38,7 @@ public class NickListener implements Listener {
             if (e.getPlayer().hasPermission("nick.nick")) {
                 ServerAPI.getUserManager().getUser(Bukkit.getOfflinePlayer(e.getPlayer().getUniqueId()).getPlayer(), user -> {
                     if(user.isNick()) {
-                        NickAPI.setRandomNick(e.getPlayer());
+                        e.getPlayer().performCommand("nick");
                     }
                 });
             }

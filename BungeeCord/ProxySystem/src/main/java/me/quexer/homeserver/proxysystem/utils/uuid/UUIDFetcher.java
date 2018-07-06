@@ -13,7 +13,6 @@ import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
-
 public class UUIDFetcher {
 
     /**
@@ -25,8 +24,8 @@ public class UUIDFetcher {
 
     private static Gson gson = new GsonBuilder().registerTypeAdapter(UUID.class, new UUIDTypeAdapter()).create();
 
-    private static final String UUID_URL = "https://item.mojang.com/users/profiles/minecraft/%s?at=%d";
-    private static final String NAME_URL = "https://item.mojang.com/user/profiles/%s/names";
+    private static final String UUID_URL = "https://api.mojang.com/users/profiles/minecraft/%s?at=%d";
+    private static final String NAME_URL = "https://api.mojang.com/user/profiles/%s/names";
     private static Map<String, UUID> uuidCache = new HashMap<String, UUID>();
     private static Map<UUID, String> nameCache = new HashMap<UUID, String>();
     private static ExecutorService pool = Executors.newCachedThreadPool();

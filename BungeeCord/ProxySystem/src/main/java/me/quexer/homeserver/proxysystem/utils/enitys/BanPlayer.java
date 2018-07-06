@@ -4,6 +4,8 @@ public class BanPlayer {
 
     private String uuid;
 
+    private String name;
+
     private long banEnd;
 
     private long muteEnd;

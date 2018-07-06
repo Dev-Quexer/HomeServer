@@ -16,7 +16,7 @@ public class BanManager {
 
 
     public void isBanned(BanPlayer banPlayer, Consumer<Boolean> consumer) {
-        if(banPlayer.getBanReason() != "NONE") {
+        if(banPlayer.getBanEnd() != -1) {
             consumer.accept(true);
         } else {
             consumer.accept(false);
@@ -31,7 +31,7 @@ public class BanManager {
                 long end;
                 int banPoints = banPlayer.getBanPoints()+1;
                 if(banPoints >= 4) {
-                    end = -1;
+                    end = -2;
                 } else {
                     long now = System.currentTimeMillis();
                     end = now + Stunden * 1000 * 60 * 60;
@@ -52,7 +52,7 @@ public class BanManager {
                                 p.sendMessage(ProxySystem.getBanPrefix() + "§7Der Spieler §c" + s + " §7wurde gebannt§8!");
                                 p.sendMessage(ProxySystem.getBanPrefix() + "§7Von§8: §e" + von);
                                 p.sendMessage(ProxySystem.getBanPrefix() + "§7Grund§8: §e" + reason);
-                                p.sendMessage(ProxySystem.getBanPrefix() + "§7Verbleibende Zeit§8: §e" + getDate(end));
+                                p.sendMessage(ProxySystem.getBanPrefix() + "§7Gebannt bis§8: §e" + getDate(end));
                                 p.sendMessage(ProxySystem.getBanPrefix() + "§7BanPoints§8: §e" + banPoints);
                                 p.sendMessage("§8§m-----------------------------------------");
                             }
@@ -61,15 +61,15 @@ public class BanManager {
 
                     ProxiedPlayer player = ProxySystem.getBungeeCord().getPlayer(UUID.fromString(banPlayer.getUuid()));
                     if(player != null && player.isConnected()) {
-                        player.disconnect("§8● §c§lHomeServer§8.§c§lnet §8●\n" +
+                        player.disconnect("§8● §c§lHomeServer§8.§c§lnet §8●\n\n" +
                                 "§cDu wurdest vom §eNetzwerk §cgebannt§8!\n" +
                                 "\n" +
                                 "§7Grund§8: §e"+reason+"\n" +
                                 "§7Gebannt von§8: §e"+von+"\n" +
-                                "§7Verbleibende Zeit§8: §e"+getDate(end)+"\n" +
+                                "§7Gebannt bis§8: §e"+getDate(end)+"\n" +
                                 "§7BanPoints§8: §e"+banPoints+"\n" +
                                 "\n" +
-                                "§7Du kannst einen §eEntbannungsantrag §cim Forum stellen");
+                                "§7Du kannst einen §eEntbannungsantrag §7im Forum stellen");
                     }
 
                 });
@@ -88,31 +88,33 @@ public class BanManager {
     public void unBanPlayer(BanPlayer banPlayer, String von, String reason) {
         banPlayer.setBanEnd(-1);
         banPlayer.setBanFrom("NONE");
-        banPlayer.setBanPoints(0);
         banPlayer.setBanReason("NONE");
-        banPlayer.setMuteEnd(-1);
-        banPlayer.setMuteFrom("NONE");
-        banPlayer.setMutePoints(0);
-        banPlayer.setMuteReason("NONE");
-        UUIDFetcher.getName(UUID.fromString(banPlayer.getUuid()), s -> {
-            for (ProxiedPlayer p : ProxySystem.getInstance().getProxy().getPlayers()) {
-                if (p.hasPermission("ban.notify")) {
-                    p.sendMessage("§8§m-----------------------------------------");
-                    p.sendMessage(ProxySystem.getBanPrefix() + "§7Der Spieler §c" + s + " §7wurde §aentbannt§8!");
-                    p.sendMessage(ProxySystem.getBanPrefix() + "§7Von§8: §e" + von);
-                    p.sendMessage(ProxySystem.getBanPrefix() + "§7Grund§8: §e" + reason);
-                    p.sendMessage("§8§m-----------------------------------------");
+        ProxySystem.getBanPlayerManager().updateUser(banPlayer, banPlayer1 -> {
+            UUIDFetcher.getName(UUID.fromString(banPlayer.getUuid()), s -> {
+                for (ProxiedPlayer p : ProxySystem.getInstance().getProxy().getPlayers()) {
+                    if (p.hasPermission("ban.notify")) {
+                        p.sendMessage("§8§m-----------------------------------------");
+                        p.sendMessage(ProxySystem.getBanPrefix() + "§7Der Spieler §c" + s + " §7wurde §aentbannt§8!");
+                        p.sendMessage(ProxySystem.getBanPrefix() + "§7Von§8: §e" + von);
+                        p.sendMessage(ProxySystem.getBanPrefix() + "§7Grund§8: §e" + reason);
+                        p.sendMessage("§8§m-----------------------------------------");
+                    }
                 }
-            }
+            });
         });
-        BanPlayerManager.banPlayerHashMap.put(banPlayer.getUuid(), banPlayer);
+
+
     }
 
     public String getDate(long millis) {
-        SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        Date now = new Date();
-        now.setTime(millis-System.currentTimeMillis());
-        return sdfDate.format(now);
+        if(millis == -2) {
+            return "§4§lPERMANENT";
+        } else {
+            SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            Date now = new Date();
+            now.setTime(millis);
+            return sdfDate.format(now);
+        }
     }
 
 

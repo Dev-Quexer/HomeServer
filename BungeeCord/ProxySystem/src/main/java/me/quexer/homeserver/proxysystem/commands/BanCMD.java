@@ -2,6 +2,7 @@ package me.quexer.homeserver.proxysystem.commands;
 
 import me.quexer.homeserver.proxysystem.ProxySystem;
 import me.quexer.homeserver.proxysystem.utils.uuid.UUIDFetcher;
+import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -156,7 +157,7 @@ public class BanCMD extends Command {
                     s.sendMessage(ProxySystem.getBanPrefix() + "§7Benutze§8: §c/ban <Spieler> <Grund>");
 
                     TextComponent text = new TextComponent();
-                    text.setText(ProxySystem.getBanPrefix() + "§7Für eine Liste mit Gründen §8[§a§lKlicke hier§8]");
+                    text.setText(ProxySystem.getBanPrefix() + "§7Für eine Liste mit Gründen §8["+ChatColor.GREEN +"Klicke hier§8]");
                     text.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/reasons"));
                     s.sendMessage(text);
 

@@ -33,9 +33,11 @@ public final class ProxySystem extends Plugin {
         setBanManager(new BanManager());
         setGson(new Gson());
         setBanPlayerManager(new BanPlayerManager());
-        getBungeeCord().getPluginManager().registerListener(this, new BanListener());
+        setBungeeCord(getProxy());
+
         getBungeeCord().getPluginManager().registerCommand(this, new BanCMD());
         getBungeeCord().getPluginManager().registerCommand(this, new ReasonsCMD());
+        getBungeeCord().getPluginManager().registerListener(this, new BanListener());
     }
 
     public static BanPlayerManager getBanPlayerManager() {
