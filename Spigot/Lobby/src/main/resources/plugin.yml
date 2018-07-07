@@ -1,0 +1,7 @@
+name: Lobby
+version: ${project.version}
+main: me.quexer.homeserver.lobby.Lobby
+prefix: Lobby
+softdepend: [ServerAPI]
+authors: [Quexer]
+description: Lobby

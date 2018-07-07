@@ -14,7 +14,11 @@ public class GameAPI {
         setGameState(GameState.LOBBY);
         setMap(map);
         setPlayerXPlayer(PlayerXPlayer);
-        CloudServer.getInstance().setMotdAndUpdate(map+" - "+PlayerXPlayer);
+        if(PlayerXPlayer != null) {
+            CloudServer.getInstance().setMotdAndUpdate(map + " - " + PlayerXPlayer);
+        } else {
+            CloudServer.getInstance().setMotdAndUpdate(map);
+        }
         CloudServer.getInstance().setServerState(ServerState.LOBBY);
     }
 
