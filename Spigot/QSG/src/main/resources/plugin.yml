@@ -1,0 +1,7 @@
+name: QSG
+version: ${project.version}
+main: me.quexer.homeserver.qsg.QSG
+prefix: QSG
+depend: [ServerAPI, CloudNetAPI]
+authors: [Quexer]
+description: QSG

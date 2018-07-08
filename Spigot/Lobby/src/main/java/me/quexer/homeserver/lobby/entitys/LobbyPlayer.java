@@ -3,9 +3,8 @@ package me.quexer.homeserver.lobby.entitys;
 import java.util.List;
 
 public class LobbyPlayer {
-    private String uuid;
 
-    private List<String> gadgets;
+    private String uuid;
 
     private double lastX;
 
@@ -13,13 +12,9 @@ public class LobbyPlayer {
 
     private double lastZ;
 
-    private String lastTrail;
-
-    private String lastHead;
-
-    private String lastChestplate;
-
     private boolean playerHider;
+
+    private boolean silentHub;
 
     public LobbyPlayer() {
     }
@@ -40,14 +35,6 @@ public class LobbyPlayer {
         return uuid;
     }
 
-    public List<String> getGadgets() {
-        return gadgets;
-    }
-
-    public void setGadgets(List<String> gadgets) {
-        this.gadgets = gadgets;
-    }
-
     public void setLastX(double lastX) {
         this.lastX = lastX;
     }
@@ -58,30 +45,6 @@ public class LobbyPlayer {
 
     public void setLastZ(double lastZ) {
         this.lastZ = lastZ;
-    }
-
-    public String getLastTrail() {
-        return lastTrail;
-    }
-
-    public void setLastTrail(String lastTrail) {
-        this.lastTrail = lastTrail;
-    }
-
-    public String getLastHead() {
-        return lastHead;
-    }
-
-    public void setLastHead(String lastHead) {
-        this.lastHead = lastHead;
-    }
-
-    public String getLastChestplate() {
-        return lastChestplate;
-    }
-
-    public void setLastChestplate(String lastChestplate) {
-        this.lastChestplate = lastChestplate;
     }
 
     public double getLastX() {
@@ -96,4 +59,11 @@ public class LobbyPlayer {
         return lastZ;
     }
 
+    public boolean isSilentHub() {
+        return silentHub;
+    }
+
+    public void setSilentHub(boolean silentHub) {
+        this.silentHub = silentHub;
+    }
 }

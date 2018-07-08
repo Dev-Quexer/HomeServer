@@ -36,7 +36,6 @@ public class ChatListener implements Listener {
     public void onCommand(PlayerCommandPreprocessEvent e) {
         Player p = e.getPlayer();
         String m = e.getMessage().split(" ")[0];
-        new AsyncTask(() -> {
         if (e.getMessage().startsWith("/")) {
             if (p.hasPermission("admin") && e.getMessage().startsWith("/cs") || e.getMessage().startsWith("/cloudserver")) {
                 e.setCancelled(false);
@@ -77,7 +76,6 @@ public class ChatListener implements Listener {
                 }
             }
         }
-        });
 
     }
 

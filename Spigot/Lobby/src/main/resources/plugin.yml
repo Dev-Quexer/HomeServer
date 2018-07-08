@@ -5,3 +5,5 @@ prefix: Lobby
 softdepend: [ServerAPI]
 authors: [Quexer]
 description: Lobby
+commands:
+  setLoc:

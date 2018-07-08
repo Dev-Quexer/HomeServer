@@ -6,11 +6,17 @@ public class User {
 
     private long coins;
 
+    private long keys;
+
     private int level;
 
     private int xp;
 
     private long lastPlayed;
+
+    private long traitorPässe;
+
+    private long detectivePässe;
 
     private long nextDailyReward;
 
@@ -19,6 +25,30 @@ public class User {
     private int elo;
 
     public User() {
+    }
+
+    public long getKeys() {
+        return keys;
+    }
+
+    public void setKeys(long keys) {
+        this.keys = keys;
+    }
+
+    public long getTraitorPässe() {
+        return traitorPässe;
+    }
+
+    public void setTraitorPässe(long traitorPässe) {
+        this.traitorPässe = traitorPässe;
+    }
+
+    public long getDetectivePässe() {
+        return detectivePässe;
+    }
+
+    public void setDetectivePässe(long detectivePässe) {
+        this.detectivePässe = detectivePässe;
     }
 
     public String getUuid() {

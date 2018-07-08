@@ -14,10 +14,10 @@ public class SoundManager {
                    p.playSound(p.getLocation(), Sound.NOTE_BASS, 0.3F, 10);
                    break;
                case NORMAL:
-                   p.playSound(p.getLocation(), Sound.WOOD_CLICK, 10, 10);
+                   p.playSound(p.getLocation(), Sound.CHICKEN_EGG_POP, 0.3F, 0.3F);
                    break;
                case GOOD:
-                   p.playSound(p.getLocation(), Sound.LEVEL_UP, 10, 10);
+                   p.playSound(p.getLocation(), Sound.LEVEL_UP, 1, 1);
                    break;
 
            }

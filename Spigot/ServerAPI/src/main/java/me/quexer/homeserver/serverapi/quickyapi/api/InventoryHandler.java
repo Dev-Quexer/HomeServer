@@ -40,13 +40,4 @@ public class InventoryHandler implements Listener {
         }
     }
 
-    @EventHandler
-    public void onClose(InventoryCloseEvent event) {
-        if (event.getInventory() != null) {
-            if (this.listener.containsKey(event.getInventory())) {
-                this.listener.remove(event.getInventory());
-            }
-
-        }
-    }
 }

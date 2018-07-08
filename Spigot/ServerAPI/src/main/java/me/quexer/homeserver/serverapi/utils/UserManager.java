@@ -35,6 +35,9 @@ public class UserManager {
                 user.setNextDailyReward(System.currentTimeMillis());
                 user.setUuid(player.getUniqueId().toString());
                 user.setXp(0);
+                user.setKeys(1);
+                user.setDetectivePässe(1);
+                user.setTraitorPässe(1);
 
                 consumer.accept(user);
                 ServerAPI.getInstance().setMetadata(player.getPlayer(), "user", user);

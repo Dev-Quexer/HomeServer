@@ -13,6 +13,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.HashMap;
+import java.util.UUID;
 
 public class JoinQuit implements Listener {
 
@@ -21,6 +22,10 @@ public class JoinQuit implements Listener {
         Bukkit.getScheduler().runTaskAsynchronously(ServerAPI.getInstance(), () -> {
             ServerAPI.getUserManager().getUser(e.getPlayer(), user -> {
                 ServerAPI.getInstance().setMetadata(e.getPlayer(), "user", user);
+
+
+
+
             });
             if(ServerAPI.isNickOnThisServer()) {
                 if (e.getPlayer().hasPermission("nick.nick")) {
@@ -32,28 +37,18 @@ public class JoinQuit implements Listener {
                 }
             }
         });
-        ScoreboardManager scoreboardManager = new ScoreboardManager();
-        HashMap<String, Integer> hashMap = new HashMap<>();
-        hashMap.put("&a", 3);
-        hashMap.put("&7Name&8: ", 2);
-        hashMap.put("&a", 1);
 
-        scoreboardManager.setBoard(e.getPlayer(), "&lHOMESERVER.NET", hashMap);
-        Bukkit.getScheduler().runTaskLaterAsynchronously(ServerAPI.getInstance(), () -> {
-            scoreboardManager.createTeam(e.getPlayer(),"Name", "&7Name&8: ", "&b", ""+e.getPlayer().getLevel());
-        }, 60);
     }
 
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
-        if (e.getPlayer().hasMetadata("user")) {
             User user = (User) e.getPlayer().getMetadata("user").get(0).value();
             user.setLastPlayed(System.currentTimeMillis());
-            ServerAPI.getInstance().removeMetadata(e.getPlayer(), "user");
             ServerAPI.getUserManager().updateUser(user, userUpdated -> {
 
             });
-        }
+            ServerAPI.getInstance().removeMetadata(e.getPlayer(), "user");
+
     }
 
 }

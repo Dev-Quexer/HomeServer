@@ -13,7 +13,7 @@ import java.util.function.Consumer;
 
 public class LobbyPlayerManager {
 
-    public LobbyPlayer getUsertFromPlayer(Player player) {
+    public LobbyPlayer valueOf(Player player) {
         return (LobbyPlayer) player.getMetadata("lobby").get(0).value();
     }
 
@@ -30,10 +30,7 @@ public class LobbyPlayerManager {
             if(document == null) {
                 LobbyPlayer lobbyPlayer = new LobbyPlayer();
                 lobbyPlayer.setUuid(p.getUniqueId().toString());
-                lobbyPlayer.setGadgets(new ArrayList<>());
-                lobbyPlayer.setLastChestplate("NONE");
-                lobbyPlayer.setLastTrail("NONE");
-                lobbyPlayer.setLastHead("NONE");
+                lobbyPlayer.setSilentHub(false);
                 lobbyPlayer.setLastX(0);
                 lobbyPlayer.setLastY(0);
                 lobbyPlayer.setLastZ(0);
